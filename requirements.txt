@@ -1,0 +1,21 @@
+#################### uart tool requirements #####################
+pyserial        == 3.5
+pandas          == 1.5.2 #for excel
+colorama        == 0.4.6 #for terminal output color
+colour          == 0.1.5 #for terminal output color
+paho-mqtt       == 1.6.1 #for MQTT
+requests        == 2.28.2
+Pillow          == 9.4.0
+allure-pytest   == 2.13.1
+pytesseract     == 0.3.10
+prettytable     == 3.6.0
+pyscreenshot    == 3.1
+paramiko-expect == 0.3.5
+webdriver_manager
+selenium
+#################################################################
+
+
+styleframe      == 4.1   #for excel
+XlsxWriter      == 3.0.9 #for styleframe
+pylink-square   == 1.0.0 #for jlink

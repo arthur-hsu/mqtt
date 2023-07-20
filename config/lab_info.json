@@ -1,0 +1,183 @@
+{
+
+"RAK2560" : {
+        "//APP": "nrf",
+        "APP": "wistoolbox",
+		"Gateway" : { 
+			"Set_Application": 0,
+			"gateway_ip": "10.6.20.212",
+            "srvr_ip": "3.1.194.124",
+			"Band": "5",
+			"SubBand": 1,
+			"//gateway_ip": "192.168.230.1",
+			"//Band": "4",
+			"//SubBand": "None",
+			"GATEWAY_SEND_TIMES": "40"
+			},
+
+		"Node" : {
+            "lpwan": 1,
+			"adv_name": "RAK2587",
+			"port": "/dev/ttyACM0",
+			"baudrate": 115200,
+			"app_index": 1,
+			"#Specific_Probe": ":AB",
+			"Specific_Probe": "GE",
+            "ReMap_IO": 0,
+			"Max_Probe": 4,
+			"Min_INTV": 60,
+			"DevEUI": "$random_hex_16",
+			"appkey": "$random_hex_32",
+			"appeui": "$random_hex_16",
+			"cls": "A",
+			"connect_type": "otaa",
+			"daddr": "FFEEDDAA",
+			"maddr": "02000001"
+			},
+
+		"Ble_Scanner": {
+			"port" : "/dev/cu.usbmodemC1D9EA75A9CC1",
+			"baudrate": 115200
+			},
+		
+		"Relay": {
+			"port" : "/dev/ttyACM0",
+			"baudrate": 115200
+			}
+		},
+
+
+"Multi_Node" : {
+
+		"Gateway" : { 
+			"Set_Application": 1,
+			"gateway_ip": "192.168.230.1",
+			"Band": "5",
+			"SubBand": 1,
+			"connect_type": "otaa",
+			"daddr": "FFEEDDAA"
+			},
+		
+		"Node" :{
+			"modle": "rak3172",
+			"fw": "RAK3172-E_3.5.3_198.bin",
+			"//fw": "skip",
+			"baudrate": 115200,
+
+			"app_index": 1,
+			"cls": "A",
+			"connect_type": "otaa",
+			"appkey": "$random_hex_32",
+			"appeui": "$random_hex_16",
+			"adr": 0,
+			"dr": 3,
+            
+            "sleep_cmd": "AT+LPM=1",
+			"uplink_min_length": 10,
+			"uplink_max_length": 40,
+			"uplink_intv": 3600,
+			"duration_day": 7
+			}
+		},
+
+
+"RUI3" : {
+	"Gateway" : { 
+			"gateway_ip": "192.168.230.1",
+			"Band": "4",
+			"SubBand": "None",
+			"daddr": "FFEEDDAA"
+		        },
+    "Node" :{
+            "port": "/dev/ttyUSB0",
+            "baudrate": 115200
+            },
+    "downgrade_fw": "RUI_3.5.1_173_release_firmware",
+    "upgrade_fw": "RUI_4.0.1_225_release_firmware",
+
+    "Compile_Example_test.py":{
+
+        "url": "https://raw.githubusercontent.com/RAKWireless/RAKwireless-Arduino-BSP-Index/staging/RUI_4.0.1/package_rakwireless.com_rui_index.json",
+
+        "internal_lib_url": "https://downloads.rakwireless.com/RUI/RUI3/Library/",
+        "internal_lib":["RAK_Protocol.zip", "RAKwireless_RAK1901_Temperature_and_Humidity_SHTC3.zip",
+                        "RAKwireless_RAK1902_Pressure_LPS22HB.zip", "RAKwireless_RAK1903_Optical_OPT3001.zip",
+                        "RAKwireless_RAK1904_Accelerate_LIS3DH.zip", "RAKwireless_RAK1906_Environment_BME680.zip",
+                        "RAKwireless_RAK1910_GPS_UBLOX7.zip", "RAKwireless_RAK5860_LTE_NBIoT_Module.zip"],
+
+        "_3rd_party_lib": ["ArduinoJson", "CayenneLPP", "Adafruit SHTC3 Library", 
+                            "Arduino_DebugUtils", "CayenneLPP", "SparkFun SHTC3 Humidity and Temperature Sensor Library", 
+                            "Adafruit BME680 Library", "Arduino_LPS22HB", "Adafruit LIS3DH", "Adafruit Unified Sensor",
+                            "TinyGPS"]
+        },
+
+    "Connectivity_test_After_FW.py":{
+        "app_index"	: 2,
+		"dr": 3,
+		"uplink_length": 226,
+		"downlink_length": 50,
+        "check_value": "CLASS,DR"
+        },
+
+    "FW_Upgrade_test.py":{
+        "testround": 20,
+        "test_Configuration_1":{
+            "story": "Factory Configuration",
+            "at+alias": "$random_hex_16",
+            "at+lpm": "1",
+            "at+pword": "$random_hex_8",
+            "at+baud": "115200",
+            "at+appeui": "$random_hex_16",
+            "at+appkey": "$random_hex_32",
+            "at+deveui": "$random_hex_16",
+            "at+cfm": "0",
+            "at+class": "C",
+            "at+band": "5",
+            "at+rety": "5",
+            "at+adr": "0",
+            "at+dr": "2",
+            "at+join": "1:0:8:0"
+                },
+        "test_Configuration_2":{
+            "story": "User Configuration",
+            "at+alias": "$random_hex_16",
+            "at+lpm": "0",
+            "at+pword": "$random_hex_8",
+            "at+baud": "115200",
+            "at+appeui": "$random_hex_16",
+            "at+appkey": "$random_hex_32",
+            "at+deveui": "$random_hex_16",
+            "at+cfm": "1",
+            "at+class": "B",
+            "at+band": "4",
+            "at+rety": "4",
+            "at+adr": "1",
+            "at+dr": "3",
+            "at+join": "0:0:8:10"
+            }
+        },
+
+    "AT_Boundary_test.py":{
+        "Import_Step_file"	: ".txt",
+        "Ignore_Step_file"	: "_L",
+
+        "test_Configuration" :{
+            "adv_name": "FA:4A:46:05",
+            "DevEUI": "$random_hex_16",
+            "appkey": "$random_hex_32",
+            "appeui": "$random_hex_16",
+            "EUI1": "1111aaaa2222bbbb",
+            "APPSKEY": "11223344556677881122334455669999",
+            "NWKSKEY": "5ADB0A881AD3F6640A983E588A7D1EB7",
+            "MAPPSKEY": "aaaabbbbccccddddeeeeffff00004444",
+            "MNWKSKEY": "aaaabbbbccccddddeeeeffff00007777",
+            "uplink_msg": "uplinkabced",
+            "downlink_msg": "downlinkabc"
+            }
+        }
+
+	},
+
+
+"Env": {"port": "24878"}
+}

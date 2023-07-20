@@ -1,0 +1,14 @@
+allure-results/*
+_*log*/
+*.swp
+fw/*
+!fw/.gitkeep
+__pycache__/
+*/__pycache__/
+*/__pycache__/*
+**/__pycache__
+*/.DS_Store
+.DS_Store
+run.py
+RAK2560/hub-final_dfu_package.zip
+config/history-trend.json
